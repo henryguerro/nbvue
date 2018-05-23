@@ -12,6 +12,9 @@
 */
 
 
-Route::get('/', function () {
-    return view('app');
+use App\Listing;
+
+Route::get('/listing/{listing}', function (Listing $listing) {
+    $model = $listing->toArray();
+    return view('app', [ 'model' => $model ]);
 });
