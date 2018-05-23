@@ -1,20 +1,16 @@
 import Vue from 'vue';
+import "core-js/fn/object/assign";
 import sample from './data';
 
 var app = new Vue({
     el: '#app',
-    data: {
+    data: Object.assign(sample, {
         headerImageStyle: {
-            'background-image': 'url(images/header.jpg)'
+            'background-image': 'url(/images/header.jpg)'
         },
-        title: sample.title,
-        address: sample.address,
-        about: sample.about,
-        amenities: sample.amenities,
-        prices: sample.prices,
         contracted: true,
         modalOpen: false
-    },
+    }),
     methods:{
         escapeKeyListener: function(evt) {
             if (evt.keyCode === 27 && this.modalOpen) {
@@ -40,4 +36,3 @@ var app = new Vue({
     },
     delimiters: ['{{', '}}']
 });
-console.log("Testing watch");
