@@ -227,3 +227,7 @@ body.modal-open {
   margin: 0 auto;
   position: relative;
 }
+
+.image-carousel img {
+  width: 100%;
+}
