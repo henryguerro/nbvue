@@ -60,8 +60,7 @@
         <div id="modal" v-bind:class="{ show : modalOpen }">
             <button v-on:click="modalOpen = false" class="modal-close">&times;</button>
             <div class="modal-content">
-                {{--<img v-bind:src="images[0]"/>--}}
-                <image-carousel ></image-carousel>
+                <image-carousel :images="images"></image-carousel>
             </div>
         </div>
     </div>

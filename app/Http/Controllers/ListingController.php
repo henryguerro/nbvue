@@ -26,6 +26,7 @@ class ListingController extends Controller
     {
         $model = $listing->toArray();
         $model = $this->add_image_urls($model, $listing->id);
+
         return view('app', ['model' => $model]);
     }
 }
