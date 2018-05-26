@@ -6,6 +6,7 @@ import ModalWindow from './components/ModalWindow';
 import ImageCarousel from './components/ImageCarousel';
 import HeaderImage from './components/HeaderImage';
 import FeatureList from './components/FeatureList.vue';
+import ExpandableText from './components/ExpandableText.vue';
 
 let model = JSON.parse(window.vuebnb_listing_model);
 model = populateAmenitiesAndPrices(model);
@@ -16,11 +17,10 @@ var app = new Vue({
         ImageCarousel,
         ModalWindow,
         HeaderImage,
-        FeatureList
+        FeatureList,
+        ExpandableText
     },
-    data: Object.assign(model, {
-        contracted: true
-    }),
+    data: Object.assign(model, {}),
     methods: {
         openModal() {
             this.$refs.imagemodal.modalOpen = true;
