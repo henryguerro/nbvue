@@ -15,18 +15,42 @@ class ListingController extends Controller
         return $model;
     }
 
-    public function get_listing_api(Listing $listing)
+    public function getListing($listing)
     {
         $model = $listing->toArray();
         $model = $this->add_image_urls($model, $listing->id);
-        return response()->json($model);
+
+        return collect(['listing' => $model]);
+    }
+
+    public function get_listing_api(Listing $listing)
+    {
+        $data = $this->getListing();
+
+        return response()->json($data);
     }
 
     public function get_listing_web(Listing $listing)
     {
-        $model = $listing->toArray();
+        $model = $this->getListing($listing);
         $model = $this->add_image_urls($model, $listing->id);
 
-        return view('app', ['model' => $model]);
+        return view('app', ['data' => $model]);
+    }
+
+    public function get_home_web()
+    {
+        $collection = Listing::all([
+            'id', 'address', 'title', 'price_per_night'
+        ]);
+        $collection->transform(function($listing) {
+            $listing->thumb = asset(
+                "images/{$listing->id}/Image_1_thumb.jpg"
+            );
+            return $listing;
+        });
+        $data = collect(['listings' => $collection->toArray()]);
+
+        return view('app', ['data' => $data]);
     }
 }

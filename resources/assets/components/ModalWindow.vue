@@ -9,7 +9,6 @@
 
 <script>
     export default {
-        name: "modal-window",
         data() {
             return {
                 modalOpen: false
@@ -26,9 +25,9 @@
             modalOpen() {
                 var className = 'modal-open';
                 if (this.modalOpen) {
-                    document.body.classList.add(ClassName);
+                    document.body.classList.add(className);
                 } else {
-                    document.body.classList.remove(ClassName);
+                    document.body.classList.remove(className);
                 }
             }
         },
