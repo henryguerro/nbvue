@@ -67,3 +67,7 @@ button {
   display: inline-block;
   margin-bottom: 0;
 }
+
+html, body {
+  overflow-x: hidden;
+}
